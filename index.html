@@ -3,19 +3,32 @@
 <head>
 <title>Page Title</title>
 </head>
-<body>
+<body  style="text-align: center;position: absolute;padding: 16px;">
+    <label id="lblDay">Happy Monday!</label>
+<div style="text-align: center;border: 1px solid gray;padding: 16px;">
 
-
-<div>
-    <span>&pi;</span> * <span id="lbl1"></span> * <span id="lbl2"></span> = <span id="lblRes"></span>
+<div style="margin: 5px;">
+   
+    <span>&pi;</span> * <span id="lbl1"></span> * <span id="lbl2"></span>/1000 = <span id="lblRes"></span>
 </div>
-<div>
-    <input type="text" id="txt1" oninput="lbl1()"><br>
-    <input type="text" id="txt2" oninput="lbl2()"><br>
-    <button type="submit" onclick="calc()">Calculate</button>
+<div  style="margin: 5px;">
+    <input type="text" id="txt1" oninput="lbl1()"  style="margin-bottom: 3px;"><br>
+    <input type="text" id="txt2" oninput="lbl2()" style="margin-bottom: 3px;"><br>
+    <button type="submit" onclick="calc()"  style="margin: 3px;">Calculate</button>
+    <button type="button" onclick="clr()"  style="margin: 3px;">Clear</button>
+</div>
 </div>
 </body>
 <script>
+    document.addEventListener("DOMContentLoaded", function(event) { 
+        var daystxt = ["Marvelous ", "Terrific ", "Wonderful ", "Thriving ","Fabulous ","Surprising ","Joyful "];
+var dateObj = new Date()
+var weekday = dateObj.toLocaleString("default", { weekday: "long" })
+const randomColor = Math.floor(Math.random()*16777215).toString(16);
+console.log(randomColor);
+document.getElementById("lblDay").innerHTML =daystxt[dateObj.getDay()-1]+weekday +"!";
+document.getElementById("lblDay").style.color = "#"+randomColor;
+});
     function lbl1(){
         document.getElementById("lbl1").innerHTML =  document.getElementById("txt1").value;
     }
@@ -27,6 +40,14 @@
       let y =  document.getElementById("txt2").value;
       let z= 3.14 * Number(x) * Number(y) /1000;
       document.getElementById("lblRes").innerHTML = z;
+    }
+    function clr(){
+       document.getElementById("txt1").value = '';
+       document.getElementById("txt2").value = '';
+       document.getElementById("lbl1").innerHTML = '';
+       document.getElementById("lbl2").innerHTML = '';
+       document.getElementById("lblRes").innerHTML = "";
+     
     }
    
     </script>
