@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+
+<div>
+    <span>&pi;</span> * <span id="lbl1"></span> * <span id="lbl2"></span> = <span id="lblRes"></span>
+</div>
+<div>
+    <input type="text" id="txt1" oninput="lbl1()"><br>
+    <input type="text" id="txt2" oninput="lbl2()"><br>
+    <button type="submit" onclick="calc()">Calculate</button>
+</div>
+</body>
+<script>
+    function lbl1(){
+        document.getElementById("lbl1").innerHTML =  document.getElementById("txt1").value;
+    }
+    function lbl2(){
+        document.getElementById("lbl2").innerHTML =  document.getElementById("txt2").value;
+    }
+    function calc(){
+      let x = document.getElementById("txt1").value;
+      let y =  document.getElementById("txt2").value;
+      let z= 3.14 * Number(x) * Number(y) /1000;
+      document.getElementById("lblRes").innerHTML = z;
+    }
+   
+    </script>
+</html>
